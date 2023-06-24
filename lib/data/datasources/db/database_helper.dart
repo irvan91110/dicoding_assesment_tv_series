@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ditonton/data/models/movie/movie_table.dart';
+import 'package:ditonton/data/models/series/series_table.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -47,6 +48,20 @@ class DatabaseHelper {
   }
 
   Future<int> removeWatchlist(MovieTable movie) async {
+    final db = await database;
+    return await db!.delete(
+      _tblWatchlist,
+      where: 'id = ?',
+      whereArgs: [movie.id],
+    );
+  }
+
+  Future<int> insertWatchlistSeries(SeriesTable movie) async {
+    final db = await database;
+    return await db!.insert(_tblWatchlist, movie.toJson());
+  }
+
+  Future<int> removeWatchlistSeries(SeriesTable movie) async {
     final db = await database;
     return await db!.delete(
       _tblWatchlist,
