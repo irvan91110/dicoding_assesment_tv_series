@@ -10,6 +10,8 @@ import 'package:ditonton/presentation/pages/movie/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/series/home_series_page.dart';
 import 'package:ditonton/presentation/pages/series/popular_series_page.dart';
 import 'package:ditonton/presentation/pages/series/series_detail_page.dart';
+import 'package:ditonton/presentation/pages/series/watchlist_series_page.dart';
+import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/presentation/provider/movie/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/movie_search_notifier.dart';
@@ -109,6 +111,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
+            case watchListPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => watchListPage());
             case HomeSeriesPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => HomeSeriesPage());
             case SeriesDetailPage.ROUTE_NAME:
@@ -119,7 +123,8 @@ class MyApp extends StatelessWidget {
               );
             case PopularSeriesPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => PopularSeriesPage());
-
+            case WatchlistSeriesPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => WatchlistSeriesPage());
             default:
               return MaterialPageRoute(builder: (_) {
                 return Scaffold(
